@@ -1,27 +1,73 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>/WEB-INF/spring/application-context.xml</param-value>
-  </context-param>
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  <servlet>
-    <servlet-name>appServlet</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-    <async-supported>true</async-supported>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>appServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <welcome-file-list>
-    <welcome-file></welcome-file>
-  </welcome-file-list>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0"> 
+
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters. contextConfigLocation is used to set which context files to 
+		load. <context-param> can be read from all servlets in your application. -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/application-context.xml</param-value>
+	</context-param>
+
+	<!-- The applicationContext.xml defines the beans for the "root webapp context", 
+		i.e. the context associated with the webapp. In most simple cases, the applicationContext.xml 
+		context is unnecessary. It is generally used to contain beans that are shared 
+		between all servlets in a webapp. If you only have one servlet, then there's 
+		not really much point, unless you have a specific use for it. Creates the 
+		Spring Container shared by all Servlets and Filters. ContextLoaderListener 
+		is a class that starts Spring container. Without Spring container your beans 
+		are just Java classes and Spring configuration file is just a useless XML 
+		document. ContextLoaderListener reads that file, finds your classes, instantiates 
+		them and wires. All your beans are then placed inside a container. -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- The init parameters of a servlet can only be accessed by that servlet. -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<!-- The number inside the <load-on-startup>1</load-on-startup> element 
+			tells the servlet container in what sequence the servlets should be loaded. 
+			The lower numbers are loaded first. If the value is negative, or unspecified, 
+			the servlet container can load the servlet at any time. Value 0 has the highest 
+			priority. The container may choose the order of loading of servlets with 
+			the same load-on-startup value. -->
+		<load-on-startup>1</load-on-startup>
+		<!-- ??? -->
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- In Spring Security, the filter classes are also Spring beans defined 
+		in the application context and thus able to take advantage of Spring's rich 
+		dependency-injection facilities and lifecycle interfaces. Spring's DelegatingFilterProxy 
+		provides the link between web.xml and the application context. The bean must 
+		implement javax.servlet.Filter and it must have the same name as that in 
+		the filter-name element. -->
+	<!-- <filter>
+		<filter-name>SampleFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>SampleFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+
+	<!-- Disables Servlet Container welcome file handling. Needed for compatibility 
+		with Servlet 3.0 and Tomcat 7.0 -->
+	<welcome-file-list>
+		<welcome-file></welcome-file>
+	</welcome-file-list>
+
 </web-app>
