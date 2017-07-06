@@ -2,7 +2,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>spring-mvc-showcase</title>
+	<title>SpringMVCLearnings</title>
 	<link href="<c:url value="/resources/form.css" />" rel="stylesheet"  type="text/css" />		
 	<link href="<c:url value="/resources/jqueryui/1.8/themes/base/jquery.ui.core.css" />" rel="stylesheet" type="text/css"/>
 	<link href="<c:url value="/resources/jqueryui/1.8/themes/base/jquery.ui.theme.css" />" rel="stylesheet" type="text/css"/>
@@ -12,11 +12,12 @@
 		Used for including CSRF token in JSON requests
 		Also see bottom of this file for adding CSRF token to JQuery AJAX requests
 	-->
+	<!-- For CSRF -->
 	<meta name="_csrf" content="${_csrf.token}"/>
 	<meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
 <body>
-<h1><a href="<c:url value="/" />">spring-mvc-showcase</a></h1>
+<h1><a href="<c:url value="/" />">SpringMVCLearnings</a></h1>
 <p>Recommended: Using a Web Developer tool such a Firebug to inspect the client/server interaction</p>
 <div id="tabs">
 	<ul>
@@ -638,6 +639,7 @@ $(document).ready(function() {
 
 	// Include CSRF token as header in JQuery AJAX requests
 	// See http://docs.spring.io/spring-security/site/docs/3.2.x/reference/htmlsingle/#csrf-include-csrf-token-ajax
+	<!-- For CSRF -->
 	var token = $("meta[name='_csrf']").attr("content");
 	var header = $("meta[name='_csrf_header']").attr("content");
 	$(document).ajaxSend(function(e, xhr, options) {
