@@ -12,7 +12,7 @@
 		Used for including CSRF token in JSON requests
 		Also see bottom of this file for adding CSRF token to JQuery AJAX requests
 	-->
-	<!-- For CSRF -->
+	<!-- For CSRF, you need to import jquery.js -->
 	<meta name="_csrf" content="${_csrf.token}"/>
 	<meta name="_csrf_header" content="${_csrf.headerName}"/>
 </head>
@@ -449,6 +449,7 @@
 		</ul>
 	</div>
 </div>
+<!-- For CSRF, you need to import jquery.js -->
 <script type="text/javascript" src="<c:url value="/resources/jquery/1.6/jquery.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/jqueryform/2.8/jquery.form.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/jqueryui/1.8/jquery.ui.core.js" />"></script>
