@@ -117,6 +117,9 @@
 				<a id="matrixVarMultiple" class="textLink" href="<c:url value="/data/matrixvars;foo=bar1/multiple;foo=bar2" />">Matrix variables (multiple)</a>
 			</li>
 			<li>
+				<a id="matrixVarMultipleAgain" class="textLink" href="<c:url value="/data/matrixvars/stocks;BT.A=276.70,+10.90,+3.91;AZN=236.00,+103.00,+3.29;SBRY=375.50,+7.60,+2.07/account;name=roger;number=105;location=stoke-on-trent,uk" />">Matrix variables (multiple) Again</a>
+			</li>
+			<li>
 				<a id="header" class="textLink" href="<c:url value="/data/header" />">Header</a>
 			</li>
 			<li>
