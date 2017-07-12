@@ -11,8 +11,13 @@
 		infrastructure -->
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<!-- @MatrixVariable will not work without enabling it. By default it is false. -->
+	<!-- @MatrixVariable will not work without enabling it. By default it is 
+		false. -->
 	<annotation-driven enable-matrix-variables="true">
+		<argument-resolvers>
+			<beans:bean
+				class="org.springframework.samples.mvc.data.custom.CustomArgumentResolver" />
+		</argument-resolvers>
 	</annotation-driven>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
