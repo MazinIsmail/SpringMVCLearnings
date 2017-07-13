@@ -18,6 +18,14 @@
 			<beans:bean
 				class="org.springframework.samples.mvc.data.custom.CustomArgumentResolver" />
 		</argument-resolvers>
+		<!-- Now we are ready to send asynchronous requests -->
+		<async-support default-timeout="3000">
+			<!-- The interceptor is called just before and after running the callback. -->
+			<callable-interceptors>
+				<beans:bean
+					class="org.springframework.samples.mvc.async.TimeoutCallableProcessingInterceptor" />
+			</callable-interceptors>
+		</async-support>
 	</annotation-driven>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
